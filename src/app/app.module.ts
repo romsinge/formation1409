@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './modules/material-components/material-components.module';
 import { UnitPipe } from './pipes/unit.pipe';
 import { RaceComponent } from './components/race/race.component';
+import { RacingPipe } from './pipes/racing.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RaceComponent } from './components/race/race.component';
     PoneyComponent,
     RainbowDirective,
     UnitPipe,
-    RaceComponent
+    RaceComponent,
+    RacingPipe
   ],
   imports: [
     BrowserModule,
