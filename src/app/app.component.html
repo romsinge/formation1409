@@ -5,15 +5,7 @@
   </h1>
 </mat-toolbar>
 
-<app-poney
-  (win)="handleWin($event)"
-  *ngFor="let poneyCell of ponies; let i = index"
-  [poney]="poneyCell"
-  appRainbow="silver"
-  [isColored]="!(i % 2)"
-  #poneyChildren
-></app-poney>
-
-<pre>
-  {{ ponies | json }}
-</pre>
+<app-race
+  *ngFor="let race of races"
+  [raceInput]="race"
+></app-race>

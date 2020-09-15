@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialComponentsModule } from './modules/material-components/material-components.module';
 import { UnitPipe } from './pipes/unit.pipe';
+import { RaceComponent } from './components/race/race.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PoneyComponent,
     RainbowDirective,
-    UnitPipe
+    UnitPipe,
+    RaceComponent
   ],
   imports: [
     BrowserModule,
