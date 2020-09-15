@@ -6,18 +6,20 @@ import { PoneyComponent } from './components/poney/poney.component';
 import { RainbowDirective } from './directives/rainbow.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MaterialComponentsModule } from './modules/material-components/material-components.module';
+import { UnitPipe } from './pipes/unit.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PoneyComponent,
-    RainbowDirective
+    RainbowDirective,
+    UnitPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MaterialComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
