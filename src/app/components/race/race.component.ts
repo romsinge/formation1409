@@ -36,7 +36,7 @@ export class RaceComponent {
     
     this.route.params.subscribe({
       next: (params) => {
-        console.log(params)
+        this.raceInput = this.dataService.getRaceById(params.id)
       }
     })
   }

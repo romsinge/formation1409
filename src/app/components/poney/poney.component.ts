@@ -43,4 +43,8 @@ export class PoneyComponent implements OnInit {
     clearInterval(this.intervalId)
   }
 
+  ngOnDestroy() {
+    this.stopRunning()
+  }
+
 }
