@@ -3,6 +3,7 @@ import { Race } from './../../interfaces/race.interface';
 import { PoneyComponent } from './../poney/poney.component';
 import { Poney } from './../../interfaces/poney.interface';
 import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-race',
@@ -11,7 +12,7 @@ import { Component, OnInit, ViewChildren, QueryList, Input } from '@angular/core
 })
 export class RaceComponent {
 
-  @Input() raceInput: Race
+  raceInput: Race
   
   ponies: Array<Poney> = []
 
@@ -26,8 +27,20 @@ export class RaceComponent {
 
   ngOnInit() {
     this.ponies = this.dataService.ponies
+
+    // this.route.params.toPromise().then(() => {
+    //   (params) => {
+    //     console.log(params)
+    //   }
+    // })
+    
+    this.route.params.subscribe({
+      next: (params) => {
+        console.log(params)
+      }
+    })
   }
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute) {}
 
 }
