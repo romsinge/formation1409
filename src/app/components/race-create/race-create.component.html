@@ -1,11 +1,26 @@
 <form (submit)="handleSubmit()">
 
   <mat-form-field>
-    <input type="text" matInput placeholder="Name" name="name">
+    <input
+      [ngModel]="race.name"
+      (ngModelChange)="race.name = $event"
+      type="text"
+      matInput
+      placeholder="Name"
+      required
+      minlength="2"
+      maxlength="15"
+      pattern="[A-Z].+"
+      name="name"
+      #nameInput="ngModel"
+    >
+      <mat-error *ngIf="nameInput.hasError('required')">
+        Ce champ est requis
+      </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Ponies" multiple>
+    <mat-select [(ngModel)]="race.poneyIds" placeholder="Ponies" multiple name="poneyIds">
       <mat-option *ngFor="let poney of ponies$ | async" [value]="poney.id">
         {{ poney.name }}
       </mat-option>
