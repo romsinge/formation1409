@@ -1,3 +1,5 @@
-<p>
-  race-list works!
-</p>
+<mat-nav-list>
+  <mat-list-item *ngFor="let race of races">
+    {{ race.name }}
+  </mat-list-item>
+</mat-nav-list>

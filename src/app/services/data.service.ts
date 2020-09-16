@@ -1,3 +1,4 @@
+import { Race } from './../interfaces/race.interface';
 import { Poney } from './../interfaces/poney.interface';
 import { Injectable } from '@angular/core';
 
@@ -10,6 +11,10 @@ export class DataService {
 
   get ponies(): Poney[] {
     return this._ponies
+  }
+
+  get races(): Race[] {
+    return this._races
   }
 
   private _ponies: Poney[] = [
@@ -27,6 +32,19 @@ export class DataService {
       "id": "2",
       "name": "Ichrak",
       "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
+    }
+  ]
+
+  private _races: Race[] = [
+    {
+      "id": "0",
+      "name": "Le Mans",
+      "poneyIds": ["0", "1"]
+    },
+    {
+      "id": "1",
+      "name": "Paris",
+      "poneyIds": ["1", "2"]
     }
   ]
 }

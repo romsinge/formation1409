@@ -1,3 +1,5 @@
+import { Race } from './../../interfaces/race.interface';
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceListComponent implements OnInit {
 
-  constructor() { }
+  races: Race[] = []
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.races = this.dataService.races
   }
 
 }
