@@ -5,7 +5,13 @@
   </h1>
 </mat-toolbar>
 
-<app-race
+<button mat-button routerLink="/race-list">Race List</button>
+<button mat-button routerLink="/race-create">Create Race</button>
+<button mat-button routerLink="/poney-create">Create Poney</button>
+
+<router-outlet></router-outlet>
+
+<!-- <app-race
   *ngFor="let race of races"
   [raceInput]="race"
-></app-race>
+></app-race> -->

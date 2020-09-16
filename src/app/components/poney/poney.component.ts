@@ -19,7 +19,6 @@ export class PoneyComponent implements OnInit {
 
   ngOnInit() {
     this.run()
-
   }
   
   displayName(): void {

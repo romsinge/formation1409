@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +11,9 @@ import { MaterialComponentsModule } from './modules/material-components/material
 import { UnitPipe } from './pipes/unit.pipe';
 import { RaceComponent } from './components/race/race.component';
 import { RacingPipe } from './pipes/racing.pipe';
+import { RaceListComponent } from './components/race-list/race-list.component';
+import { RaceCreateComponent } from './components/race-create/race-create.component';
+import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,16 @@ import { RacingPipe } from './pipes/racing.pipe';
     RainbowDirective,
     UnitPipe,
     RaceComponent,
-    RacingPipe
+    RacingPipe,
+    RaceListComponent,
+    RaceCreateComponent,
+    PoneyCreateComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
