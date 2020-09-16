@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class RaceComponent {
 
-  raceInput: Race
+  raceInput$: Observable<Race>
   
   ponies$: Observable<Poney[]>
 
@@ -37,7 +37,7 @@ export class RaceComponent {
     
     this.route.params.subscribe({
       next: (params) => {
-        this.raceInput = this.dataService.getRaceById(params.id)
+        this.raceInput$ = this.dataService.getRaceById(params.id)
       }
     })
   }

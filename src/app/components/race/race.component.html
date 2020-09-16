@@ -1,8 +1,8 @@
-<mat-toolbar>{{ raceInput.name }}</mat-toolbar>
+<mat-toolbar>{{ (raceInput$ | async)?.name }}</mat-toolbar>
 
 <app-poney
   (win)="handleWin($event)"
-  *ngFor="let poneyCell of ponies$ | async | racing:raceInput.poneyIds; let i = index"
+  *ngFor="let poneyCell of ponies$ | async | racing:(raceInput$ | async)?.poneyIds; let i = index"
   [poney]="poneyCell"
   appRainbow="silver"
   [isColored]="!(i % 2)"

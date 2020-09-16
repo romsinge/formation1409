@@ -3,6 +3,7 @@ import { Poney } from './../interfaces/poney.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,12 @@ export class DataService {
     return this.http.get<Race[]>('http://localhost:3000/races')
   }
 
-  getRaceById(id: string): Race {
-    return this._races.find((race) => {
-      return race.id === id
-    })
+  getRaceById(id: string): Observable<Race> {
+    return this.races.pipe(map((races) => {
+      return races.find((race) => {
+        return race.id === id
+      })
+    }))
   }
 
   private _ponies: Poney[] = []
