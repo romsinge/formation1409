@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Race } from './../../interfaces/race.interface';
 import { PoneyComponent } from './../poney/poney.component';
 import { Poney } from './../../interfaces/poney.interface';
@@ -12,23 +13,7 @@ export class RaceComponent {
 
   @Input() raceInput: Race
   
-  ponies: Array<Poney> = [
-    {
-      "id": "0",
-      "name": "Romain",
-      "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-green-running.gif"
-    },
-    {
-      "id": "1",
-      "name": "Idris",
-      "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif"
-    },
-    {
-      "id": "2",
-      "name": "Ichrak",
-      "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
-    }
-  ]
+  ponies: Array<Poney> = []
 
   @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
 
@@ -38,5 +23,11 @@ export class RaceComponent {
       poneyComponent.stopRunning()
     })
   }
+
+  ngOnInit() {
+    this.ponies = this.dataService.ponies
+  }
+
+  constructor(private dataService: DataService) {}
 
 }
