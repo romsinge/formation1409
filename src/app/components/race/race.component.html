@@ -2,7 +2,7 @@
 
 <app-poney
   (win)="handleWin($event)"
-  *ngFor="let poneyCell of ponies | racing:raceInput.poneyIds; let i = index"
+  *ngFor="let poneyCell of ponies$ | async | racing:raceInput.poneyIds; let i = index"
   [poney]="poneyCell"
   appRainbow="silver"
   [isColored]="!(i % 2)"

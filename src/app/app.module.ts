@@ -15,6 +15,8 @@ import { RaceListComponent } from './components/race-list/race-list.component';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
+import { HttpClientModule } from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
     BrowserModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Race } from './../../interfaces/race.interface';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceListComponent implements OnInit {
 
-  races: Race[] = []
+  races$: Observable<Race[]>
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.races = this.dataService.races
+    this.races$ = this.dataService.races
   }
 
 }

@@ -1,20 +1,22 @@
 import { Race } from './../interfaces/race.interface';
 import { Poney } from './../interfaces/poney.interface';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  get ponies(): Poney[] {
-    return this._ponies
+  get ponies(): Observable<Poney[]> {
+    return this.http.get<Poney[]>('http://localhost:3000/ponies')
   }
 
-  get races(): Race[] {
-    return this._races
+  get races(): Observable<Race[]> {
+    return this.http.get<Race[]>('http://localhost:3000/races')
   }
 
   getRaceById(id: string): Race {
@@ -23,34 +25,7 @@ export class DataService {
     })
   }
 
-  private _ponies: Poney[] = [
-    {
-      "id": "0",
-      "name": "Romain",
-      "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-green-running.gif"
-    },
-    {
-      "id": "1",
-      "name": "Idris",
-      "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif"
-    },
-    {
-      "id": "2",
-      "name": "Ichrak",
-      "image": "https://ng-ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
-    }
-  ]
+  private _ponies: Poney[] = []
 
-  private _races: Race[] = [
-    {
-      "id": "0",
-      "name": "Le Mans",
-      "poneyIds": ["0", "1"]
-    },
-    {
-      "id": "1",
-      "name": "Paris",
-      "poneyIds": ["1", "2"]
-    }
-  ]
+  private _races: Race[] = []
 }
