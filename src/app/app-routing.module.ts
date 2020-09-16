@@ -1,3 +1,4 @@
+import { RaceComponent } from './components/race/race.component';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
 import { RaceListComponent } from './components/race-list/race-list.component';
@@ -16,6 +17,10 @@ const ROUTES: Route[] = [
   {
     path: 'poney-create',
     component: PoneyCreateComponent
+  },
+  {
+    path: 'race/:id',
+    component: RaceComponent
   },
   {
     path: '**',
