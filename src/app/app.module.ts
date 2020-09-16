@@ -16,6 +16,7 @@ import { RaceCreateComponent } from './components/race-create/race-create.compon
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http'
     BrowserAnimationsModule,
     MaterialComponentsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
