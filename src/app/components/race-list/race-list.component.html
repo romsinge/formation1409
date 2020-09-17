@@ -3,6 +3,6 @@
     *ngFor="let race of races$ | async"
     [routerLink]="['/race', race.id]"
   >
-    {{ race.name }}
+    {{ race.name }} &nbsp; <button (click)="delete(race.id)">Delete</button>
   </mat-list-item>
 </mat-nav-list>
