@@ -1,3 +1,4 @@
+import { metadataReducer } from './store/reducers/metadata.reducer';
 import { RaceEffects } from './store/effects/race.effects';
 import { DataService } from './services/data.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,7 +45,8 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({
-      races: raceReducer
+      races: raceReducer,
+      metadata: metadataReducer
     }),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([

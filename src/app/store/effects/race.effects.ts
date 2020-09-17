@@ -1,9 +1,11 @@
+import { sendErrorMessage } from './../actions/metadata.actions';
 import { DataService } from './../../services/data.service';
-import { map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { initRaces, initRacesSuccess, addRace, addRaceSuccess } from './../actions/race.actions';
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 @Injectable()
 export class RaceEffects {
@@ -14,6 +16,8 @@ export class RaceEffects {
       mergeMap(() => {
         return this.dataService.races.pipe(map(races => {
           return initRacesSuccess({ races })
+        })).pipe(catchError((err) => {
+          return of(sendErrorMessage({ message: err.message }))
         }))
       })
     )

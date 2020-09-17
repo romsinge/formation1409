@@ -1,9 +1,12 @@
+import { DataService } from './services/data.service';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AppState } from './store/app.state';
 import { Race } from './interfaces/race.interface';
 import { PoneyComponent } from './components/poney/poney.component';
 import { Poney } from './interfaces/poney.interface';
 import { Component, QueryList, ViewChildren } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { initRaces } from './store/actions/race.actions';
 
 @Component({
@@ -15,10 +18,12 @@ export class AppComponent {
   title = 'AMBIENT-IT';
 
   races: Race[] = []
+  errorMessage$: Observable<string>
 
   ngOnInit() {
     this.store.dispatch(initRaces())
+    this.errorMessage$ = this.dataService.errorMessageSub$
   }
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private dataService: DataService) {}
 }
