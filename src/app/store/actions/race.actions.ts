@@ -14,3 +14,13 @@ export const initRacesSuccess = createAction(
   '[RACE] Init Success',
   props<{ races: Race[] }>()
 )
+
+export const addRace = createAction(
+  '[RACE] Add',
+  props<{ race: Race}>()
+)
+
+export const addRaceSuccess = createAction(
+  '[RACE] Add Success',
+  props<{ race: Race}>()
+)
