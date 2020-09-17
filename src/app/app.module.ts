@@ -1,3 +1,4 @@
+import { RaceEffects } from './store/effects/race.effects';
 import { DataService } from './services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { raceReducer } from './store/reducers/race.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot({
       races: raceReducer
     }),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([
+      RaceEffects
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
