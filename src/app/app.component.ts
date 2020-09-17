@@ -1,3 +1,4 @@
+import { PoneyService } from './services/poney.service';
 import { DataService } from './services/data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -23,7 +24,9 @@ export class AppComponent {
   ngOnInit() {
     this.store.dispatch(initRaces())
     this.errorMessage$ = this.dataService.errorMessageSub$
+
+    this.poneyService.getAll()
   }
 
-  constructor(private store: Store<AppState>, private dataService: DataService) {}
+  constructor(private store: Store<AppState>, private dataService: DataService, private poneyService: PoneyService) {}
 }

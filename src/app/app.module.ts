@@ -1,3 +1,4 @@
+import { entityConfig } from './store/app.state';
 import { metadataReducer } from './store/reducers/metadata.reducer';
 import { RaceEffects } from './store/effects/race.effects';
 import { DataService } from './services/data.service';
@@ -24,6 +25,7 @@ import { StoreModule } from '@ngrx/store';
 import { raceReducer } from './store/reducers/race.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { EntityDataModule } from '@ngrx/data'
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { EffectsModule } from '@ngrx/effects';
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([
       RaceEffects
-    ])
+    ]),
+    EntityDataModule.forRoot(entityConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
