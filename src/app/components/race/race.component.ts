@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { PoneyService } from './../../services/poney.service';
 import { DataService } from './../../services/data.service';
 import { Race } from './../../interfaces/race.interface';
 import { PoneyComponent } from './../poney/poney.component';
@@ -27,7 +29,7 @@ export class RaceComponent {
   }
 
   ngOnInit() {
-    this.ponies$ = this.dataService.ponies
+    this.ponies$ = this.poneyService.entities$.pipe(map(ponies => JSON.parse(JSON.stringify(ponies))))
 
     // this.route.params.toPromise().then(() => {
     //   (params) => {
@@ -42,6 +44,6 @@ export class RaceComponent {
     })
   }
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute, private poneyService: PoneyService) {}
 
 }

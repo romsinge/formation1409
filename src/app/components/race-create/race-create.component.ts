@@ -1,3 +1,4 @@
+import { PoneyService } from './../../services/poney.service';
 import { addRace } from './../../store/actions/race.actions';
 import { AppState } from './../../store/app.state';
 import { Race } from './../../interfaces/race.interface';
@@ -21,10 +22,10 @@ export class RaceCreateComponent implements OnInit {
     poneyIds: []
   }
 
-  constructor(private dataService: DataService, private store: Store<AppState>) { }
+  constructor(private dataService: DataService, private store: Store<AppState>, private poneyService: PoneyService) { }
 
   ngOnInit() {
-    this.ponies$ = this.dataService.ponies
+    this.ponies$ = this.poneyService.entities$
   }
 
   handleSubmit() {
