@@ -18,6 +18,9 @@ import { PoneyCreateComponent } from './components/poney-create/poney-create.com
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { raceReducer } from './store/reducers/race.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,11 @@ import { FormsModule } from '@angular/forms';
     MaterialComponentsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({
+      races: raceReducer
+    }),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
