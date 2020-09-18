@@ -2,7 +2,7 @@ import { RaceComponent } from './components/race/race.component';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
 import { RaceListComponent } from './components/race-list/race-list.component';
-import { Route, RouterModule } from '@angular/router';
+import { PreloadAllModules, Route, RouterModule } from '@angular/router';
 import { NgModule } from "@angular/core";
 
 const ROUTES: Route[] = [
@@ -23,6 +23,10 @@ const ROUTES: Route[] = [
     component: RaceComponent
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+  },
+  {
     path: '**',
     redirectTo: 'race-list'
   }
@@ -30,7 +34,9 @@ const ROUTES: Route[] = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {
+      preloadingStrategy: PreloadAllModules
+    })
   ],
   exports: [
     RouterModule
