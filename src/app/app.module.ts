@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './http-interceptors/auth.interceptor';
 import { entityConfig } from './store/app.state';
 import { metadataReducer } from './store/reducers/metadata.reducer';
 import { RaceEffects } from './store/effects/race.effects';
@@ -19,7 +20,7 @@ import { RaceListComponent } from './components/race-list/race-list.component';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { raceReducer } from './store/reducers/race.reducer';
@@ -57,7 +58,13 @@ import { EntityDataModule } from '@ngrx/data'
     ]),
     EntityDataModule.forRoot(entityConfig)
   ],
-  providers: [],
+  providers: [
+    {
+      useClass: AuthInterceptor,
+      provide: HTTP_INTERCEPTORS,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
