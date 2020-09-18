@@ -5,9 +5,10 @@ import { Race } from './../../interfaces/race.interface';
 import { DataService } from './../../services/data.service';
 import { Poney } from './../../interfaces/poney.interface';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-race-create',
@@ -21,6 +22,7 @@ export class RaceCreateComponent implements OnInit {
     name: '',
     poneyIds: []
   }
+  @ViewChild('raceForm') raceForm: FormGroup
 
   constructor(private dataService: DataService, private store: Store<AppState>, private poneyService: PoneyService) { }
 

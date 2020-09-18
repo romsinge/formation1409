@@ -1,3 +1,5 @@
+import { FormGuard } from './guards/form.guard';
+import { AuthGuard } from './modules/admin/guards/auth.guard';
 import { RaceComponent } from './components/race/race.component';
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
@@ -12,7 +14,8 @@ const ROUTES: Route[] = [
   },
   {
     path: 'race-create',
-    component: RaceCreateComponent
+    component: RaceCreateComponent,
+    canDeactivate: [ FormGuard ]
   },
   {
     path: 'poney-create',
@@ -24,7 +27,8 @@ const ROUTES: Route[] = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    canLoad: [ AuthGuard ]
   },
   {
     path: '**',
@@ -34,9 +38,7 @@ const ROUTES: Route[] = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(ROUTES, {
-      preloadingStrategy: PreloadAllModules
-    })
+    RouterModule.forRoot(ROUTES)
   ],
   exports: [
     RouterModule
