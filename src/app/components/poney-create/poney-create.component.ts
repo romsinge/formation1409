@@ -9,12 +9,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class PoneyCreateComponent implements OnInit {
 
   poneyForm: FormGroup
+  errorMessages: any = {
+    required: 'Field required',
+    minlength: '2 characters required'
+  }
 
   constructor() { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
-      name: new FormControl('hbgfrwe', [ Validators.required, Validators.minLength(2) ]),
+      name: new FormControl('', [ Validators.required, Validators.minLength(2) ]),
       image: new FormControl('', [ Validators.required ])
     })
   }
