@@ -20,7 +20,7 @@ import { RaceCreateComponent } from './components/race-create/race-create.compon
 import { PoneyCreateComponent } from './components/poney-create/poney-create.component';
 
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { raceReducer } from './store/reducers/race.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -46,6 +46,7 @@ import { EntityDataModule } from '@ngrx/data'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({
       races: raceReducer,
       metadata: metadataReducer

@@ -1,3 +1,12 @@
-<p>
-  poney-create works!
-</p>
+<form [formGroup]="poneyForm">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Image" formControlName="image">
+  </mat-form-field>
+
+  <button mat-button>Submit</button>
+</form>

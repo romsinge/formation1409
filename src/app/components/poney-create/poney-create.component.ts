@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-poney-create',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PoneyCreateComponent implements OnInit {
 
+  poneyForm: FormGroup
+
   constructor() { }
 
   ngOnInit() {
+    this.poneyForm = new FormGroup({
+      name: new FormControl('hbgfrwe', [ Validators.required, Validators.minLength(2) ]),
+      image: new FormControl('', [ Validators.required ])
+    })
   }
 
 }
