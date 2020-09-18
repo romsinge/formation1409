@@ -9,6 +9,9 @@
 
   <mat-form-field>
     <input matInput placeholder="Image" formControlName="image">
+    <mat-error *ngFor="let error of poneyForm.controls.image.errors | keyvalue">
+      {{ errorMessages[error.key] }}
+    </mat-error>
   </mat-form-field>
 
   <button mat-button>Submit</button>
