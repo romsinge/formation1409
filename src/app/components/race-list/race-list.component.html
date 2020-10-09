@@ -1,6 +1,6 @@
 <mat-nav-list>
   <mat-list-item
-    *ngFor="let race of races$ | async"
+    *ngFor="let race of races$ | async; trackBy: trackById"
     [routerLink]="['/race', race.id]"
   >
     {{ race.name }} &nbsp; <button (click)="delete(race.id)">Delete</button>

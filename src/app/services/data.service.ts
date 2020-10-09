@@ -4,7 +4,7 @@ import { Poney } from './../interfaces/poney.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/internal/operators'
 import { select, Store } from '@ngrx/store';
 
 @Injectable({

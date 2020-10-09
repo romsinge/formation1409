@@ -5,7 +5,7 @@ import { RaceEffects } from './store/effects/race.effects';
 import { DataService } from './services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PoneyComponent } from './components/poney/poney.component';
@@ -27,6 +27,7 @@ import { raceReducer } from './store/reducers/race.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { EntityDataModule } from '@ngrx/data'
+import { InitService } from './services/init.service';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,16 @@ import { EntityDataModule } from '@ngrx/data'
     {
       useClass: AuthInterceptor,
       provide: HTTP_INTERCEPTORS,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (initService: InitService) => {
+        return () => {
+          initService.init()
+        }
+      },
+      deps: [ InitService ],
       multi: true
     }
   ],

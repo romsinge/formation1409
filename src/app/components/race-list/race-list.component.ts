@@ -25,4 +25,8 @@ export class RaceListComponent implements OnInit {
     this.store.dispatch(deleteRace({ id }))
   }
 
+  trackById(race) {
+    return race.id
+  }
+
 }

@@ -1,10 +1,11 @@
 import { Poney } from './../../interfaces/poney.interface';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-poney',
   templateUrl: './poney.component.html',
-  styleUrls: ['./poney.component.scss']
+  styleUrls: ['./poney.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PoneyComponent implements OnInit {
 
@@ -13,12 +14,16 @@ export class PoneyComponent implements OnInit {
   intervalId
   winner: boolean = false
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     console.log('PONEY CONSTRUCTOR')
   }
 
   ngOnInit() {
     this.run()
+
+    // setTimeout(() => {
+    //   this.cdr.detectChanges()
+    // }, 5000)
   }
   
   displayName(): void {
